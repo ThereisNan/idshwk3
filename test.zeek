@@ -5,7 +5,7 @@ event http_header(c: connection, is_orig: bool, name: string, value: string) {
 	if (c$http?$user_agent){
 		local agent: string = to_lower(c$http$user_agent);
 		if (orig_addr in agentTable) {
-			add agent[orig_addr][agent];
+			add agentTable[orig_addr][agent];
 		} else {
 			agentTable[orig_addr] = set(agent);
 		}
